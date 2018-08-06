@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dataservice
+    port: 8080
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+      discovery:
+        healthCheckPath: /healthCheck
+        healthCheckInterval: 5s
+      config:
+        enabled: true
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+      repositories:
+        enabled: true
+      database: testdatabase  

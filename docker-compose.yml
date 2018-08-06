@@ -1,0 +1,23 @@
+version: "2.1"
+services:
+  consul:
+    image: consul:latest
+    ports:
+      - 8400:8400
+      - 8500:8500
+      - 54:8600/udp
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+  dataservice:
+    build: ./dataservice
+    ports:
+     - 8080:8080
+    depends_on:
+      - consul
+      - mongodb
+    links:
+      - consul:consul
+      - mongodb:mongodb 
